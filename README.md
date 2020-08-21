@@ -93,7 +93,7 @@ In the Metrics page, we could see the scc_users metric.
 
 We can also use PromQL (Prometheus Query Language) to filter the metric.
 
-![Screenshot](assets/openshift_monitoring_ui_query_.png)
+![Screenshot](assets/openshift_monitoring_ui_query.png)
 
 ## Alerting
 
