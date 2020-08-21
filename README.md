@@ -1,3 +1,7 @@
+# SCC_Monitoring
+
+A sample implementation that creates a custom Prometheus metric, to keep track of all the Service Account(SA)s that are bound to the Security Context Constraint(SCC)s and triggers an alert for any mismatch.
+
 # Introduction
 
 OpenShift Container Platform ships with a [pre-configured and self-updating monitoring stack](https://docs.openshift.com/container-platform/4.3/monitoring/cluster_monitoring/about-cluster-monitoring.html) that is based on the [Prometheus](https://prometheus.io/) open source project and its wider eco-system. It provides monitoring of cluster components and ships with a set of alerts to immediately notify the cluster administrator about any occurring problems and a set of Grafana dashboards.
