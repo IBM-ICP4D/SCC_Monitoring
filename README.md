@@ -87,8 +87,13 @@ This sample implementation, creates a custom Prometheus metric, to keep track of
 ## Prometheus Metrics
 
 **Exposed Metric:**
+In the Metrics page, we could see the scc_users metric.
 
 ![Screenshot](assets/openshift_monitoring_ui.png)
+
+We can also use PromQL (Prometheus Query Language) to filter the metric.
+
+![Screenshot](assets/openshift_monitoring_ui_query_.png)
 
 ## Alerting
 
@@ -96,4 +101,8 @@ This sample implementation, creates a custom Prometheus metric, to keep track of
 
 if any `scc_users` metric returns a value of 0 for 1 minute, this warning alert will get triggered.
 
+The allowed configuration for each SCC in terms of the allowed Service Accounts to bind to the SCC can be defined conveniently in the configmap `manifests/configmap.yaml` . Any violation from the above rule would trigger an alert.
+
 ![Screenshot](assets/prometheus-alert.png)
+
+In this example we have demonstrated how we can monitor the SCC for the Service Accounts that are bound to the SCCs.  Similar rule could be applied for users / groups that could be bound to the SCC.  The program could also be customized for other scenarios as well. 
