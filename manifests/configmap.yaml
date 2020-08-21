@@ -1,0 +1,17 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: prometheus-scc-metrics-config
+  namespace: scc-monitoring
+data:
+  scc-mappings: |-
+    {
+      "anyuid": "",
+      "hostaccess": "",
+      "hostmount-anyuid": "system:serviceaccount:openshift-infra:pv-recycler-controller",
+      "hostnetwork": "",
+      "node-exporter": "",
+      "nonroot": "",
+      "privileged": "system:admin,system:serviceaccount:openshift-infra:build-controller",
+      "restricted": ""
+    }

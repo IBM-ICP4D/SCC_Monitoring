@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    prometheus: prometheus-scc-metrics
+    role: alert-rules
+  name: prometheus-scc-metrics-rules
+  namespace: openshift-monitoring
+spec:
+  groups:
+    - name: scc-monitoring.rules
+      rules:
+        - alert: SCCUserMatchInconsistency
+          annotations:
+            description: >-
+              SCC Users Does not match
+            summary: >-
+              Potential Security Issue
+          expr: scc_users == 0
+          for: 1m
+          labels:
+            severity: warning

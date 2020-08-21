@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-scc-metrics
+  namespace: scc-monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus-scc-metrics
+  template:
+    metadata:
+      labels:
+        app: prometheus-scc-metrics
+    spec:
+      containers:
+        - name: prometheus-scc-metrics
+          image: image-registry.openshift-image-registry.svc:5000/scc-monitoring/prometheus-scc-metrics:v1.0.0
+          resources:
+            limits:
+              cpu: 500m
+              memory: 128Mi
+          ports:
+            - name: metrics
+              containerPort: 8080
+          env:
+            - name: SCC_MAPPINGS
+              valueFrom:
+                configMapKeyRef:
+                  name: prometheus-scc-metrics-config
+                  key: scc-mappings
+      serviceAccountName: prometheus-scc-metrics-sa

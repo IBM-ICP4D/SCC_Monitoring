@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: prometheus-scc-metrics-monitor
+  name: prometheus-scc-metrics-monitor
+  namespace: scc-monitoring
+spec:
+  endpoints:
+    - port: metrics
+      interval: 15s
+  namespaceSelector:
+    matchNames:
+      - scc-monitoring
+  selector:
+    matchLabels:
+      app: prometheus-scc-metrics
